@@ -3,8 +3,10 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
+use App\Models\Post;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Contracts\Support\Htmlable;
 
 class EditPost extends EditRecord
 {
@@ -17,5 +19,13 @@ class EditPost extends EditRecord
             Actions\ForceDeleteAction::make(),
             Actions\RestoreAction::make(),
         ];
+    }
+
+    public function getTitle(): string|Htmlable
+    {
+        /** @var Post $record */
+        $record = $this->getRecord();
+
+        return $record->title;
     }
 }
