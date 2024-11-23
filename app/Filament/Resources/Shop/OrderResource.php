@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Shop;
 
 use App\Filament\Resources\Shop\OrderResource\Pages;
+use App\Filament\Resources\Shop\OrderResource\Widgets;
 use App\Models\Shop\Order;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class OrderResource extends Resource
@@ -28,6 +30,8 @@ class OrderResource extends Resource
 
     public static function form(Form $form): Form
     {
+        // TODO: form
+
         return $form
             ->schema([
                 Forms\Components\TextInput::make('shop_customer_id')
@@ -52,31 +56,52 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('shop_customer_id')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('number')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('customer.name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+
+                Tables\Columns\TextColumn::make('status')
+                    ->badge(),
+
                 Tables\Columns\TextColumn::make('total_price')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->summarize([
+                        Tables\Columns\Summarizers\Sum::make()
+                            ->money(),
+                    ]),
+
                 Tables\Columns\TextColumn::make('currency')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+
                 Tables\Columns\TextColumn::make('shipping_price')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('shipping_method')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable()
+                    ->summarize([
+                        Tables\Columns\Summarizers\Sum::make()
+                            ->money(),
+                    ]),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->date()
+                    ->label('Order Date')
+                    ->toggleable(),
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
                     ->sortable()
@@ -84,6 +109,8 @@ class OrderResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
+
+                // TODO: created_at filter.
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -94,6 +121,12 @@ class OrderResource extends Resource
                     Tables\Actions\ForceDeleteBulkAction::make(),
                     Tables\Actions\RestoreBulkAction::make(),
                 ]),
+            ])
+            ->groups([
+                Tables\Grouping\Group::make('created_at')
+                    ->collapsible()
+                    ->date()
+                    ->label('Order Date'),
             ]);
     }
 
@@ -101,6 +134,13 @@ class OrderResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            Widgets\OrderStats::class,
         ];
     }
 
@@ -119,5 +159,30 @@ class OrderResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['number', 'customer.name'];
+    }
+
+    public static function getGlobalSearchEloquentQuery(): Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->with(['customer', 'items']);
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Customer' => optional($record->customer)->name,
+        ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        /** @var class-string<Model> $modelClass */
+        $modelClass = static::$model;
+
+        return (string) $modelClass::where('status', 'new')->count();
     }
 }
