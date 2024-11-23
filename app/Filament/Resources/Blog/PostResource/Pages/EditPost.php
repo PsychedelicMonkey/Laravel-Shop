@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\PostResource\Pages;
+namespace App\Filament\Resources\Blog\PostResource\Pages;
 
-use App\Filament\Resources\PostResource;
-use App\Models\Post;
+use App\Filament\Resources\Blog\PostResource;
+use App\Models\Blog\Post;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Contracts\Support\Htmlable;

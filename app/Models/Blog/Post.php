@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Blog;
 
 use App\Enums\PostStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +13,7 @@ use Spatie\Tags\HasTags;
 
 class Post extends Model implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\PostFactory> */
+    /** @use HasFactory<\Database\Factories\Blog\PostFactory> */
     use HasFactory;
 
     use HasTags;
