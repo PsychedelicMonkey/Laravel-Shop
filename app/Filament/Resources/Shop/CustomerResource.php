@@ -28,6 +28,8 @@ class CustomerResource extends Resource
 
     public static function form(Form $form): Form
     {
+        // TODO: form
+
         return $form
             ->schema([
                 Forms\Components\TextInput::make('user_id')
@@ -47,6 +49,8 @@ class CustomerResource extends Resource
 
     public static function table(Table $table): Table
     {
+        // TODO: table
+
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user_id')
