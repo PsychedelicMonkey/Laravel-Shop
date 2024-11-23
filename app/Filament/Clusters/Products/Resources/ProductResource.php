@@ -3,7 +3,9 @@
 namespace App\Filament\Clusters\Products\Resources;
 
 use App\Filament\Clusters\Products;
+use App\Filament\Clusters\Products\Resources\BrandResource\RelationManagers\ProductsRelationManager;
 use App\Filament\Clusters\Products\Resources\ProductResource\Pages;
+use App\Filament\Clusters\Products\Resources\ProductResource\Widgets;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -150,6 +152,7 @@ class ProductResource extends Resource
                         Forms\Components\Section::make('Associations')
                             ->schema([
                                 Forms\Components\Select::make('shop_brand_id')
+                                    ->hiddenOn(ProductsRelationManager::class)
                                     ->relationship('brand', 'name')
                                     ->searchable(),
 
@@ -272,6 +275,13 @@ class ProductResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            Widgets\ProductStats::class,
         ];
     }
 

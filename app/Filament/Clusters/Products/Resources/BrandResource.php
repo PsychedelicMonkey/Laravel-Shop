@@ -4,6 +4,7 @@ namespace App\Filament\Clusters\Products\Resources;
 
 use App\Filament\Clusters\Products;
 use App\Filament\Clusters\Products\Resources\BrandResource\Pages;
+use App\Filament\Clusters\Products\Resources\BrandResource\RelationManagers;
 use App\Models\Brand;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -122,7 +123,7 @@ class BrandResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ProductsRelationManager::class,
         ];
     }
 
