@@ -6,7 +6,7 @@ use App\Filament\Clusters\Products;
 use App\Filament\Clusters\Products\Resources\BrandResource\RelationManagers\ProductsRelationManager;
 use App\Filament\Clusters\Products\Resources\ProductResource\Pages;
 use App\Filament\Clusters\Products\Resources\ProductResource\Widgets;
-use App\Models\Product;
+use App\Models\Shop\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

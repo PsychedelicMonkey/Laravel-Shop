@@ -1,20 +1,20 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Shop;
 
-use App\Models\Brand;
+use App\Models\Shop\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Brand>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop\Category>
  */
-class BrandFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * @var string
      */
-    protected $model = Brand::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -24,9 +24,8 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $name = $this->faker->unique()->company(),
+            'name' => $name = $this->faker->unique()->words(3, true),
             'slug' => Str::slug($name),
-            'website' => 'https://www.' . $this->faker->domainName(),
             'description' => $this->faker->realText(),
             'is_visible' => $this->faker->boolean(),
             'created_at' => $this->faker->dateTimeBetween('-1 year', '-6 month'),

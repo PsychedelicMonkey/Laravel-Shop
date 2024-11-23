@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Shop;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Brand extends Model implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\BrandFactory> */
+    /** @use HasFactory<\Database\Factories\Shop\BrandFactory> */
     use HasFactory;
 
     use InteractsWithMedia;

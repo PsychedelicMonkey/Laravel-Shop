@@ -5,7 +5,7 @@ namespace App\Filament\Clusters\Products\Resources;
 use App\Filament\Clusters\Products;
 use App\Filament\Clusters\Products\Resources\BrandResource\Pages;
 use App\Filament\Clusters\Products\Resources\BrandResource\RelationManagers;
-use App\Models\Brand;
+use App\Models\Shop\Brand;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

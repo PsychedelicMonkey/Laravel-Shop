@@ -5,10 +5,12 @@ namespace Database\Seeders;
 use App\Models\Blog\Author;
 use App\Models\Blog\Category as BlogCategory;
 use App\Models\Blog\Post;
-use App\Models\Brand;
-use App\Models\Category as ShopCategory;
-use App\Models\Customer;
-use App\Models\Product;
+use App\Models\Shop\Brand;
+use App\Models\Shop\Category as ShopCategory;
+use App\Models\Shop\Customer;
+use App\Models\Shop\Order;
+use App\Models\Shop\OrderItem;
+use App\Models\Shop\Product;
 use App\Models\User;
 use Closure;
 use Illuminate\Database\Eloquent\Collection;
@@ -65,6 +67,17 @@ class DatabaseSeeder extends Seeder
             ->hasAttached($categories->random(rand(3, 6)), ['created_at' => now(), 'updated_at' => now()])
             ->create());
         $this->command->info('Shop products created.');
+
+        $this->command->warn(PHP_EOL . 'Creating orders...');
+        $orders = $this->withProgressBar(1000, fn () => Order::factory(1)
+            ->sequence(fn ($sequence) => ['shop_customer_id' => $customers->random(1)->first()->id])
+            ->has(
+                OrderItem::factory()->count(rand(2, 5))
+                    ->state(fn (array $attributes, Order $order) => ['shop_product_id' => $products->random(1)->first()->id]),
+                'items'
+            )
+            ->create());
+        $this->command->info('Shop orders created.');
 
         // Blog
         $this->command->warn(PHP_EOL . 'Creating blog categories...');
