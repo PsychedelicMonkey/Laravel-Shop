@@ -3,8 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Blog\Author;
-use App\Models\Blog\Category;
+use App\Models\Blog\Category as BlogCategory;
 use App\Models\Blog\Post;
+use App\Models\Brand;
+use App\Models\Category as ShopCategory;
+use App\Models\Customer;
+use App\Models\Product;
 use App\Models\User;
 use Closure;
 use Illuminate\Database\Eloquent\Collection;
@@ -35,9 +39,36 @@ class DatabaseSeeder extends Seeder
         ]));
         $this->command->info('Admin user created.');
 
+        // Shop
+        $this->command->warn(PHP_EOL . 'Creating shop brands...');
+        $brands = $this->withProgressBar(20, fn () => Brand::factory(1)
+            ->create());
+        $this->command->info('Shop brands created.');
+
+        $this->command->warn(PHP_EOL . 'Creating shop categories...');
+        $categories = $this->withProgressBar(20, fn () => ShopCategory::factory(1)
+            ->has(
+                ShopCategory::factory()->count(3),
+                'children'
+            )
+            ->create());
+        $this->command->info('Shop categories created.');
+
+        $this->command->warn(PHP_EOL . 'Creating shop customers...');
+        $customers = $this->withProgressBar(1000, fn () => Customer::factory(1)
+            ->create());
+        $this->command->info('Shop customers created.');
+
+        $this->command->warn(PHP_EOL . 'Creating shop products...');
+        $products = $this->withProgressBar(50, fn () => Product::factory(1)
+            ->sequence(fn ($sequence) => ['shop_brand_id' => $brands->random(1)->first()->id])
+            ->hasAttached($categories->random(rand(3, 6)), ['created_at' => now(), 'updated_at' => now()])
+            ->create());
+        $this->command->info('Shop products created.');
+
         // Blog
         $this->command->warn(PHP_EOL . 'Creating blog categories...');
-        $categories = $this->withProgressBar(20, fn () => Category::factory(1)
+        $blogCategories = $this->withProgressBar(20, fn () => BlogCategory::factory(1)
             ->create());
         $this->command->info('Blog categories created.');
 
@@ -45,7 +76,7 @@ class DatabaseSeeder extends Seeder
         $this->withProgressBar(20, fn () => Author::factory(1)
             ->has(
                 Post::factory(5)
-                    ->state(fn (array $attributes, Author $author) => ['blog_category_id' => $categories->random(1)->first()->id]),
+                    ->state(fn (array $attributes, Author $author) => ['blog_category_id' => $blogCategories->random(1)->first()->id]),
                 'posts'
             )
             ->create());
