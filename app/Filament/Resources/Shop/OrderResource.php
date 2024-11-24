@@ -6,10 +6,10 @@ use App\Enums\OrderStatus;
 use App\Filament\Clusters\Products\Resources\ProductResource;
 use App\Filament\Resources\Shop\OrderResource\Pages;
 use App\Filament\Resources\Shop\OrderResource\Widgets;
+use App\Forms\Components\AddressForm;
 use App\Models\Shop\Order;
 use App\Models\Shop\Product;
 use App\Models\User;
-use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -18,6 +18,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Carbon;
 use Random\RandomException;
 use Squire\Models\Currency;
 
@@ -307,7 +308,8 @@ class OrderResource extends Resource
                 ->required()
                 ->searchable(),
 
-            // TODO: address form
+            AddressForm::make('address')
+                ->columnSpanFull(),
 
             Forms\Components\RichEditor::make('notes')
                 ->columnSpanFull(),
