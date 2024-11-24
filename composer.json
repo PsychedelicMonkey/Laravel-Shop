@@ -14,7 +14,9 @@
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "spatie/laravel-medialibrary": "^11.10",
-        "spatie/laravel-tags": "^4.7"
+        "spatie/laravel-tags": "^4.7",
+        "squirephp/countries-en": "^3.6",
+        "squirephp/currencies-en": "^3.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
