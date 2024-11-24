@@ -2,11 +2,13 @@
 
 namespace App\Filament\Clusters\Products\Resources\ProductResource\RelationManagers;
 
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Infolists\Components\IconEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
+use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -71,7 +73,17 @@ class CommentsRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                    ->after(function ($record) {
+                        /** @var User $user */
+                        $user = auth()->user();
+
+                        Notification::make()
+                            ->title('New comment')
+                            ->icon('heroicon-o-chat-bubble-bottom-center-text')
+                            ->body("{$record->customer->name} commented on product ({$record->commentable->name}).")
+                            ->sendToDatabase($user);
+                    }),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

@@ -128,6 +128,12 @@ class PostResource extends Resource
                     ->date()
                     ->sortable(),
 
+                Tables\Columns\TextColumn::make('comments.customer.name')
+                    ->label('Comment Authors')
+                    ->listWithLineBreaks()
+                    ->limitList(2)
+                    ->expandableLimitedList(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
