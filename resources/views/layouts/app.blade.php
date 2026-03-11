@@ -9,14 +9,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+    {{-- prettier-ignore-start --}}
     @hasSection ('title')
         <title>
-            @yield ('title')
-            - {{ config('app.name') }}
+            @yield ('title') - {{ config('app.name') }}
         </title>
     @else
         <title>{{ config('app.name') }}</title>
     @endif
+    {{-- prettier-ignore-end --}}
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite (['resources/css/app.css', 'resources/js/app.ts'])
