@@ -46,8 +46,8 @@
                     <details>
                         <summary>{{ __('Account') }}</summary>
                         <ul>
-                            <li><a href="#">{{ __('Login') }}</a></li>
-                            <li><a href="#">{{ __('Register') }}</a></li>
+                            <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                            <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         </ul>
                     </details>
                 </li>

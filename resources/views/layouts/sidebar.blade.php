@@ -12,8 +12,8 @@
             <li><a href="#">{{ __('About') }}</a></li>
             <li><a href="#">{{ __('Wishlist') }}</a></li>
             <li class="menu-title">{{ __('Account') }}</li>
-            <li><a href="#">{{ __('Login') }}</a></li>
-            <li><a href="#">{{ __('Register') }}</a></li>
+            <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+            <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
         </ul>
     </div>
 </div>

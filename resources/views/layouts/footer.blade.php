@@ -7,9 +7,9 @@
     <nav>
         <h6 class="footer-title">{{ __('Account') }}</h6>
         <div>
-            <a class="link link-hover">{{ __('Login') }}</a>
+            <a href="{{ route('login') }}" class="link link-hover">{{ __('Login') }}</a>
             <span class="text-base-content/60">{{ __('or') }}</span>
-            <a class="link link-hover">{{ __('Register') }}</a>
+            <a href="{{ route('register') }}" class="link link-hover">{{ __('Register') }}</a>
         </div>
         <a class="link link-hover">{{ __('Wishlist') }}</a>
         <a class="link link-hover">{{ __('Order Status') }}</a>
