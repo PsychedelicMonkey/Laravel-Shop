@@ -1,8 +1,26 @@
-<div class="navbar bg-base-100 shadow-sm">
+<div class="navbar bg-base-200 shadow-sm">
+    <div class="flex-none lg:hidden">
+        <label for="navbar-drawer" class="btn btn-square btn-ghost">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block h-6 w-6 stroke-current"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+            </svg>
+        </label>
+    </div>
     <div class="flex-1">
         <a href="{{ route('home') }}" class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
     </div>
     <div class="flex-none">
+        <!-- Cart dropdown -->
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                 <div class="indicator">
@@ -23,6 +41,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- User dropdown -->
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 rounded-full">

@@ -1,5 +1,7 @@
 @extends ('layouts.app')
 
+@section ('title', __('Welcome'))
+
 @section ('content')
     <div class="mx-auto max-w-7xl p-4 lg:p-6">
         <article class="prose lg:prose-xl">

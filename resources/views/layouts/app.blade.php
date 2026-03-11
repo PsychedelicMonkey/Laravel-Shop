@@ -9,19 +9,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-    <title>{{ config('app.name') }}</title>
+    @hasSection ('title')
+        <title>
+            @yield ('title')
+            - {{ config('app.name') }}
+        </title>
+    @else
+        <title>{{ config('app.name') }}</title>
+    @endif
 
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite (['resources/css/app.css', 'resources/js/app.js'])
     @endif
 </head>
 <body class="font-sans antialiased">
-    @include ('layouts.navigation')
+    <div class="drawer">
+        <input type="checkbox" id="navbar-drawer" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+            <!-- Navbar -->
+            @include ('layouts.navigation')
 
-    <div class="min-h-screen">
-        <main>
-            @yield ('content')
-        </main>
+            <!-- Page Content -->
+            <div class="min-h-screen">
+                <main>
+                    @yield ('content')
+                </main>
+            </div>
+
+            @include ('layouts.footer')
+        </div>
+
+        <!-- Sidebar -->
+        @include ('layouts.sidebar')
     </div>
 </body>
 </html>
