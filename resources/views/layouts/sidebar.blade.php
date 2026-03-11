@@ -1,7 +1,19 @@
 <div class="drawer-side">
     <label for="navbar-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 min-h-full w-80 p-4">
-        <li><a>Sidebar item 1</a></li>
-        <li><a>Sidebar item 2</a></li>
-    </ul>
+    <div class="bg-base-200 min-h-full w-80">
+        <div class="join w-full p-4">
+            <label class="input join-item">
+                <input type="search" name="search" id="search" placeholder="{{ __('Search') }}" />
+            </label>
+            <button class="btn btn-neutral join-item">{{ __('Search') }}</button>
+        </div>
+
+        <ul class="menu w-full px-4 pb-4">
+            <li><a href="#">{{ __('About') }}</a></li>
+            <li><a href="#">{{ __('Wishlist') }}</a></li>
+            <li class="menu-title">{{ __('Account') }}</li>
+            <li><a href="#">{{ __('Login') }}</a></li>
+            <li><a href="#">{{ __('Register') }}</a></li>
+        </ul>
+    </div>
 </div>
