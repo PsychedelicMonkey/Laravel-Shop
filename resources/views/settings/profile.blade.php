@@ -49,5 +49,28 @@
                 <button type="submit" class="btn btn-neutral mt-4">{{ __('Save changes') }}</button>
             </x-fieldset>
         </form>
+
+        <div class="divider"></div>
+
+        <form action="{{ route('profile.destroy') }}" method="post">
+            @csrf
+            @method('DELETE')
+
+            <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+                <legend class="fieldset-legend">{{ __('Delete account') }}</legend>
+
+                <label for="password" class="label">{{ __('Password') }}</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="{{ __('Password') }}"
+                    @class (['input', 'input-error' => $errors->has('password')])
+                />
+                <x-input-error :messages="$errors->get('password')" />
+
+                <button type="submit" class="btn btn-error">{{ __('Delete account') }}</button>
+            </x-fieldset>
+        </form>
     </div>
 @endsection
