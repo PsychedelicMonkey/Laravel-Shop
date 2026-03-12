@@ -27,6 +27,43 @@
         <a class="link link-hover">{{ __('Privacy Policy') }}</a>
         <a class="link link-hover">{{ __('Cookies') }}</a>
     </nav>
+
+    <!-- Theme controller -->
+    <nav>
+        <h6 class="footer-title">{{ __('Theme') }}</h6>
+        <x-fieldset>
+            <label class="flex cursor-pointer items-center gap-2">
+                <input
+                    type="radio"
+                    name="theme-radios"
+                    class="radio radio-sm theme-controller"
+                    value="default"
+                    @checked ($appearance === 'default')
+                />
+                {{ __('Default') }}
+            </label>
+            <label class="flex cursor-pointer items-center gap-2">
+                <input
+                    type="radio"
+                    name="theme-radios"
+                    class="radio radio-sm theme-controller"
+                    value="light"
+                    @checked ($appearance === 'light')
+                />
+                {{ __('Light') }}
+            </label>
+            <label class="flex cursor-pointer items-center gap-2">
+                <input
+                    type="radio"
+                    name="theme-radios"
+                    class="radio radio-sm theme-controller"
+                    value="dark"
+                    @checked ($appearance === 'dark')
+                />
+                {{ __('Dark') }}
+            </label>
+        </x-fieldset>
+    </nav>
 </footer>
 <footer class="footer sm:footer-horizontal footer-center bg-neutral text-neutral-content p-4">
     <aside>

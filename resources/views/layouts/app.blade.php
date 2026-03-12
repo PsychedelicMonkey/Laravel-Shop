@@ -1,5 +1,8 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    data-theme="{{ $appearance ?? 'default' }}"
+>
 <head>
     <meta charset="UTF-8" />
     <meta
@@ -8,6 +11,20 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <script>
+        (function () {
+            const appearance = '{{ $appearance ?? 'default' }}';
+
+            if (appearance === 'default') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                if (prefersDark) {
+                    document.documentElement.dataset.theme = 'dark';
+                }
+            }
+        })();
+    </script>
 
     {{-- prettier-ignore-start --}}
     @hasSection ('title')
