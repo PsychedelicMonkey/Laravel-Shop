@@ -100,7 +100,23 @@
                                 <span class="badge">{{ __('New') }}</span>
                             </a>
                         </li>
-                        <li><a>{{ __('Settings') }}</a></li>
+                        <li>
+                            <details>
+                                <summary>{{ __('Settings') }}</summary>
+                                <ul>
+                                    <li>
+                                        <a href="{{ route('profile.edit') }}">
+                                            {{ __('Edit profile') }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('password.edit') }}">
+                                            {{ __('Change password') }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </details>
+                        </li>
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
 
