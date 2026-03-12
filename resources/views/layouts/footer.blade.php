@@ -6,11 +6,18 @@
     </nav>
     <nav>
         <h6 class="footer-title">{{ __('Account') }}</h6>
-        <div>
-            <a href="{{ route('login') }}" class="link link-hover">{{ __('Login') }}</a>
-            <span class="text-base-content/60">{{ __('or') }}</span>
-            <a href="{{ route('register') }}" class="link link-hover">{{ __('Register') }}</a>
-        </div>
+        @auth
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="link link-hover">{{ __('Logout') }}</button>
+            </form>
+        @else
+            <div>
+                <a href="{{ route('login') }}" class="link link-hover">{{ __('Login') }}</a>
+                <span class="text-base-content/60">{{ __('or') }}</span>
+                <a href="{{ route('register') }}" class="link link-hover">{{ __('Register') }}</a>
+            </div>
+        @endauth
         <a class="link link-hover">{{ __('Wishlist') }}</a>
         <a class="link link-hover">{{ __('Order Status') }}</a>
     </nav>

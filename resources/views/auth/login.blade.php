@@ -34,7 +34,7 @@
                 <x-input-error :messages="$errors->get('password')" />
 
                 <label class="label">
-                    <input type="checkbox" name="remember" id="remember" class="checkbox">
+                    <input type="checkbox" name="remember" id="remember" class="checkbox" />
                     {{ __('Remember me') }}
                 </label>
 

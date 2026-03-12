@@ -12,8 +12,15 @@
             <li><a href="#">{{ __('About') }}</a></li>
             <li><a href="#">{{ __('Wishlist') }}</a></li>
             <li class="menu-title">{{ __('Account') }}</li>
-            <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-            <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+            @auth
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <li><button type="submit">{{ __('Logout') }}</button></li>
+                </form>
+            @else
+                <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+            @endauth
         </ul>
     </div>
 </div>

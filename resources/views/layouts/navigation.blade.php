@@ -42,15 +42,17 @@
             <ul class="menu menu-horizontal">
                 <li><a href="#">{{ __('About') }}</a></li>
                 <li><a href="#">{{ __('Wish list') }}</a></li>
-                <li>
-                    <details>
-                        <summary>{{ __('Account') }}</summary>
-                        <ul>
-                            <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                        </ul>
-                    </details>
-                </li>
+                @guest
+                    <li>
+                        <details>
+                            <summary>{{ __('Account') }}</summary>
+                            <ul>
+                                <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                                <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                @endguest
             </ul>
         </div>
 
@@ -77,30 +79,38 @@
                 </div>
             </div>
 
-            <!-- User dropdown -->
-            <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                    <div class="w-10 rounded-full">
-                        <img
-                            alt="{{ __('Tailwind CSS Navbar component') }}"
-                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                        />
+            @auth
+                <!-- User dropdown -->
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img
+                                alt="{{ __('Tailwind CSS Navbar component') }}"
+                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                            />
+                        </div>
                     </div>
+                    <ul
+                        tabindex="-1"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                    >
+                        <li>
+                            <a class="justify-between">
+                                {{ __('Profile') }}
+                                <span class="badge">{{ __('New') }}</span>
+                            </a>
+                        </li>
+                        <li><a>{{ __('Settings') }}</a></li>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+
+                            <li>
+                                <button type="submit">{{ __('Logout') }}</button>
+                            </li>
+                        </form>
+                    </ul>
                 </div>
-                <ul
-                    tabindex="-1"
-                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                >
-                    <li>
-                        <a class="justify-between">
-                            {{ __('Profile') }}
-                            <span class="badge">{{ __('New') }}</span>
-                        </a>
-                    </li>
-                    <li><a>{{ __('Settings') }}</a></li>
-                    <li><a>{{ __('Logout') }}</a></li>
-                </ul>
-            </div>
+            @endauth
         </div>
     </div>
 </div>
