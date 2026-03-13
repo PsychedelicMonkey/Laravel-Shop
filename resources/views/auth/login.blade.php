@@ -12,6 +12,10 @@
             @csrf
 
             <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+                @if (session()->has('status'))
+                    <div class="alert alert-success" role="alert">{{session('status')}}</div>
+                @endif
+
                 <label for="email" class="label">{{ __('Email address') }}</label>
                 <input
                     type="email"
@@ -37,6 +41,12 @@
                     <input type="checkbox" name="remember" id="remember" class="checkbox" />
                     {{ __('Remember me') }}
                 </label>
+
+                <a
+                    href="{{ route('password.request') }}"
+                    class="link link-info"
+                    >{{ __('Forgot password?') }}</a
+                >
 
                 <button type="submit" class="btn btn-neutral mt-4">{{ __('Login') }}</button>
             </x-fieldset>

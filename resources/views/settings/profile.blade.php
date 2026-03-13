@@ -54,7 +54,7 @@
 
         <form action="{{ route('profile.destroy') }}" method="post">
             @csrf
-            @method('DELETE')
+            @method ('DELETE')
 
             <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
                 <legend class="fieldset-legend">{{ __('Delete account') }}</legend>
