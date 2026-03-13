@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Settings;
+namespace App\Http\Requests\Auth;
 
+use App\Concerns\PasswordValidationRules;
 use App\Concerns\ProfileValidationRules;
-use App\Models\User;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileUpdateRequest extends FormRequest
+class RegistrationRequest extends FormRequest
 {
+    use PasswordValidationRules;
     use ProfileValidationRules;
 
     /**
@@ -20,9 +21,10 @@ class ProfileUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        /** @var User $user */
-        $user = $this->user();
-
-        return $this->profileRules($user->id);
+        return [
+            'name' => $this->nameRules(),
+            'email' => $this->emailRules(),
+            'password' => $this->passwordRules(),
+        ];
     }
 }
