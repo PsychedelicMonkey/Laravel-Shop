@@ -16,11 +16,14 @@ Route::middleware('auth')->group(function (): void {
         ->name('profile.update');
 
     Route::delete('settings/profile', [ProfileController::class, 'destroy'])
+        ->middleware('verified')
         ->name('profile.destroy');
 
     Route::get('settings/password', [PasswordController::class, 'edit'])
+        ->middleware('verified')
         ->name('password.edit');
 
     Route::put('settings/password', [PasswordController::class, 'update'])
+        ->middleware('verified')
         ->name('password.update');
 });

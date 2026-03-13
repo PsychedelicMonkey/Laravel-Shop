@@ -42,11 +42,9 @@
                     {{ __('Remember me') }}
                 </label>
 
-                <a
-                    href="{{ route('password.request') }}"
-                    class="link link-info"
-                    >{{ __('Forgot password?') }}</a
-                >
+                <a href="{{ route('password.request') }}" class="link link-info">
+                    {{ __('Forgot password?') }}
+                </a>
 
                 <button type="submit" class="btn btn-neutral mt-4">{{ __('Login') }}</button>
             </x-fieldset>
