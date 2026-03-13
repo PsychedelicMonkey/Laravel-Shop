@@ -9,6 +9,7 @@ use App\Models\Subscription;
 use App\Models\SubscriptionItem;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Validation\Rules\Password;
 use Laravel\Cashier\Cashier;
 use Laravel\Sanctum\Sanctum;
 
@@ -36,5 +37,14 @@ class AppServiceProvider extends ServiceProvider
 
         // Sanctum settings.
         Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+
+        // Default password rules.
+        Password::defaults(function (): Password {
+            $rule = Password::min(8);
+
+            return $this->app->isProduction()
+                ? $rule->letters()->mixedCase()->numbers()->symbols()
+                : $rule;
+        });
     }
 }
