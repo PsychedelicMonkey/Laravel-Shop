@@ -10,7 +10,7 @@
             @csrf
             @method ('PUT')
 
-            <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+            <x-fieldset class="border-base-300 bg-base-200 rounded-box max-w-xl border p-4">
                 @if (session('status') === 'password-updated')
                     <div
                         x-data="{ show: true }"
@@ -30,7 +30,7 @@
                     name="current_password"
                     id="current_password"
                     placeholder="{{ __('Current password') }}"
-                    @class (['input', 'input-error' => $errors->has('current_password')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('current_password')])
                 />
                 <x-input-error :messages="$errors->get('current_password')" />
 
@@ -40,7 +40,7 @@
                     name="password"
                     id="password"
                     placeholder="{{ __('New password') }}"
-                    @class (['input', 'input-error' => $errors->has('password')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('password')])
                 />
                 <x-input-error :messages="$errors->get('password')" />
 
@@ -50,7 +50,7 @@
                     name="password_confirmation"
                     id="password_confirmation"
                     placeholder="{{ __('Confirm password') }}"
-                    @class (['input', 'input-error' => $errors->has('password_confirmation')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('password_confirmation')])
                 />
                 <x-input-error :messages="$errors->get('password_confirmation')" />
 

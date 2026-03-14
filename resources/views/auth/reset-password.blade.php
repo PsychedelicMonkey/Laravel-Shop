@@ -12,7 +12,7 @@
             <!-- Password reset token -->
             <input type="hidden" name="token" value="{{ $request->route('token') }}" />
 
-            <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+            <x-fieldset class="border-base-300 bg-base-200 rounded-box max-w-xl border p-4">
                 <x-label for="email">{{ __('Email address') }}</x-label>
                 <input
                     type="email"
@@ -20,7 +20,7 @@
                     id="email"
                     placeholder="{{ __('Email address') }}"
                     value="{{ old('email', $request->email) }}"
-                    @class (['input', 'input-error' => $errors->has('email')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('email')])
                     readonly
                 />
                 <x-input-error :messages="$errors->get('email')" />
@@ -31,7 +31,7 @@
                     name="password"
                     id="password"
                     placeholder="{{ __('Password') }}"
-                    @class (['input', 'input-error' => $errors->has('password')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('password')])
                 />
                 <x-input-error :messages="$errors->get('password')" />
 
@@ -41,7 +41,7 @@
                     name="password_confirmation"
                     id="password_confirmation"
                     placeholder="{{ __('Confirm password') }}"
-                    @class (['input', 'input-error' => $errors->has('password_confirmation')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('password_confirmation')])
                 />
                 <x-input-error :messages="$errors->get('password_confirmation')" />
 

@@ -9,9 +9,9 @@
         <form action="{{ route('register.store') }}" method="post">
             @csrf
 
-            <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+            <x-fieldset class="border-base-300 bg-base-200 rounded-box max-w-xl border p-4">
                 <x-label>{{ __('Name') }}</x-label>
-                <label @class (['input', 'input-error' => $errors->has('name')])>
+                <label @class (['input', 'w-full', 'input-error' => $errors->has('name')])>
                     <input
                         type="text"
                         name="name"
@@ -25,7 +25,7 @@
                 <x-input-error :messages="$errors->get('name')" />
 
                 <x-label for="email">{{ __('Email address') }}</x-label>
-                <label @class (['input', 'input-error' => $errors->has('email')])>
+                <label @class (['input', 'w-full', 'input-error' => $errors->has('email')])>
                     <input
                         type="email"
                         name="email"
@@ -39,7 +39,7 @@
                 <x-input-error :messages="$errors->get('email')" />
 
                 <x-label for="password">{{ __('Password') }}</x-label>
-                <label @class (['input', 'input-error' => $errors->has('password')])>
+                <label @class (['input', 'w-full', 'input-error' => $errors->has('password')])>
                     <input
                         type="password"
                         name="password"
@@ -52,7 +52,9 @@
                 <x-input-error :messages="$errors->get('password')" />
 
                 <x-label for="password_confirmation">{{ __('Confirm password') }}</x-label>
-                <label @class (['input', 'input-error' => $errors->has('password_confirmation')])>
+                <label
+                    @class (['input', 'w-full', 'input-error' => $errors->has('password_confirmation')])
+                >
                     <input
                         type="password"
                         name="password_confirmation"

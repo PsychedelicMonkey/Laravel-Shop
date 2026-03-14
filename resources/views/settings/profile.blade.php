@@ -16,7 +16,7 @@
             @csrf
             @method ('PATCH')
 
-            <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+            <x-fieldset class="border-base-300 bg-base-200 rounded-box max-w-xl border p-4">
                 @if (! $user->hasVerifiedEmail())
                     <div class="alert alert-warning alert-vertical" role="alert">
                         {{ __('Your email address is unverified. Certain features will be restricted until you verify your email address.') }}
@@ -58,12 +58,12 @@
                     id="name"
                     placeholder="{{ __('Name') }}"
                     value="{{ old('name', $user->name) }}"
-                    @class (['input', 'input-error' => $errors->has('name')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('name')])
                 />
                 <x-input-error :messages="$errors->get('name')" />
 
                 <x-label for="email">{{ __('Email address') }}</x-label>
-                <label @class (['input', 'input-error' => $errors->has('email')])>
+                <label @class (['input', 'w-full', 'input-error' => $errors->has('email')])>
                     <input
                         type="email"
                         name="email"
@@ -89,7 +89,7 @@
             @csrf
             @method ('DELETE')
 
-            <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+            <x-fieldset class="border-base-300 bg-base-200 rounded-box max-w-xl border p-4">
                 <legend class="fieldset-legend">{{ __('Delete account') }}</legend>
 
                 <label for="password" class="label">{{ __('Password') }}</label>
@@ -98,7 +98,7 @@
                     name="password"
                     id="password"
                     placeholder="{{ __('Password') }}"
-                    @class (['input', 'input-error' => $errors->has('password')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('password')])
                     @disabled (! $user->hasVerifiedEmail())
                 />
                 <x-input-error :messages="$errors->get('password')" />

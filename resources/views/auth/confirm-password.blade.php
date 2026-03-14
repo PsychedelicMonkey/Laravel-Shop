@@ -11,14 +11,16 @@
         <form action="{{ route('password.confirm') }}" method="post">
             @csrf
 
-            <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
+            <x-fieldset class="border-base-300 bg-base-200 rounded-box max-w-xl border p-4">
+                <legend class="fieldset-legend">{{ __('Confirm your password') }}</legend>
+
                 <x-label for="password">{{ __('Password') }}</x-label>
                 <input
                     type="password"
                     name="password"
                     id="password"
                     placeholder="{{ __('Password') }}"
-                    @class (['input', 'input-error' => $errors->has('password')])
+                    @class (['input', 'w-full', 'input-error' => $errors->has('password')])
                 />
                 <x-input-error :messages="$errors->get('password')" />
 
