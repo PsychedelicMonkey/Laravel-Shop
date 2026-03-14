@@ -57,4 +57,18 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+
+    public function getInitialsAttribute(): string
+    {
+        $name_array = explode(' ', trim($this->name));
+
+        if (count($name_array) === 1) {
+            return $name_array[0][0];
+        }
+
+        $firstWord = $name_array[0];
+        $lastWord = $name_array[count($name_array) - 1];
+
+        return $firstWord[0] . $lastWord[0];
+    }
 }

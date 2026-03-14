@@ -89,12 +89,13 @@
             @auth
                 <!-- User dropdown -->
                 <div class="dropdown dropdown-end">
-                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-                        <div class="w-10 rounded-full">
-                            <img
-                                alt="{{ __('Tailwind CSS Navbar component') }}"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                            />
+                    <div
+                        tabindex="0"
+                        role="button"
+                        class="btn btn-ghost btn-circle avatar avatar-placeholder"
+                    >
+                        <div class="bg-neutral text-neutral-content w-10 rounded-full">
+                            <span>{{ auth()->user()->initials }}</span>
                         </div>
                     </div>
                     <ul
