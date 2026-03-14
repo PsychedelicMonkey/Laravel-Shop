@@ -13,7 +13,7 @@
             <input type="hidden" name="token" value="{{ $request->route('token') }}" />
 
             <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
-                <label for="email" class="label">{{ __('Email address') }}</label>
+                <x-label for="email">{{ __('Email address') }}</x-label>
                 <input
                     type="email"
                     name="email"
@@ -25,7 +25,7 @@
                 />
                 <x-input-error :messages="$errors->get('email')" />
 
-                <label for="password" class="label">{{ __('Password') }}</label>
+                <x-label for="password">{{ __('Password') }}</x-label>
                 <input
                     type="password"
                     name="password"
@@ -35,11 +35,7 @@
                 />
                 <x-input-error :messages="$errors->get('password')" />
 
-                <label
-                    for="password_confirmation"
-                    class="label"
-                    >{{ __('Confirm password') }}</label
-                >
+                <x-label for="password_confirmation">{{ __('Confirm password') }}</x-label>
                 <input
                     type="password"
                     name="password_confirmation"

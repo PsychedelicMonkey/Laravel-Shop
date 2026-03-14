@@ -51,7 +51,7 @@
                     </div>
                 @endif
 
-                <label for="name" class="label">{{ __('Name') }}</label>
+                <x-label for="name">{{ __('Name') }}</x-label>
                 <input
                     type="text"
                     name="name"
@@ -62,7 +62,7 @@
                 />
                 <x-input-error :messages="$errors->get('name')" />
 
-                <label for="email" class="label">{{ __('Email address') }}</label>
+                <x-label for="email">{{ __('Email address') }}</x-label>
                 <label @class (['input', 'input-error' => $errors->has('email')])>
                     <input
                         type="email"

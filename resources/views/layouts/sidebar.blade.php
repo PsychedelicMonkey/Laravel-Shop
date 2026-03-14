@@ -9,6 +9,8 @@
         </div>
 
         <ul class="menu w-full px-4 pb-4">
+            <li><a href="#">{{ __('Shop') }}</a></li>
+            <li><a href="#">{{ __('Blog') }}</a></li>
             <li><a href="#">{{ __('About') }}</a></li>
             <li><a href="#">{{ __('Wishlist') }}</a></li>
             <li class="menu-title">{{ __('Account') }}</li>
@@ -18,8 +20,12 @@
                     <li><button type="submit">{{ __('Logout') }}</button></li>
                 </form>
             @else
-                <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                <li @class (['menu-active' => request()->routeIs('login')])>
+                    <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li @class (['menu-active' => request()->routeIs('register')])>
+                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
             @endauth
         </ul>
     </div>

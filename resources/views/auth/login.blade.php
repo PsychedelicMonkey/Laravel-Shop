@@ -16,7 +16,7 @@
                     <div class="alert alert-success" role="alert">{{session('status')}}</div>
                 @endif
 
-                <label for="email" class="label">{{ __('Email address') }}</label>
+                <x-label for="email">{{ __('Email address') }}</x-label>
                 <input
                     type="email"
                     name="email"
@@ -27,7 +27,7 @@
                 />
                 <x-input-error :messages="$errors->get('email')" />
 
-                <label for="password" class="label">{{ __('Password') }}</label>
+                <x-label for="password">{{ __('Password') }}</x-label>
                 <input
                     type="password"
                     name="password"
@@ -37,10 +37,10 @@
                 />
                 <x-input-error :messages="$errors->get('password')" />
 
-                <label class="label">
+                <x-label>
                     <input type="checkbox" name="remember" id="remember" class="checkbox" />
                     {{ __('Remember me') }}
-                </label>
+                </x-label>
 
                 <a href="{{ route('password.request') }}" class="link link-info">
                     {{ __('Forgot password?') }}

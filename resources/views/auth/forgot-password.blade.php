@@ -14,7 +14,7 @@
                     <div class="alert alert-info" role="alert">{{ session('status') }}</div>
                 @endif
 
-                <label for="email" class="label">{{ __('Email address') }}</label>
+                <x-label for="email">{{ __('Email address') }}</x-label>
                 <input
                     type="email"
                     name="email"

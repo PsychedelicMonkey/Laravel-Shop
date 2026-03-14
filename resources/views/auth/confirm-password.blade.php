@@ -12,7 +12,7 @@
             @csrf
 
             <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
-                <label for="password" class="label">{{ __('Password') }}</label>
+                <x-label for="password">{{ __('Password') }}</x-label>
                 <input
                     type="password"
                     name="password"

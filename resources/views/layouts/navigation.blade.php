@@ -19,6 +19,13 @@
         </div>
 
         <a href="{{ route('home') }}" class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
+
+        <div class="hidden lg:block">
+            <ul class="menu menu-horizontal">
+                <li><a href="#">{{ __('Shop') }}</a></li>
+                <li><a href="#">{{ __('Blog') }}</a></li>
+            </ul>
+        </div>
     </div>
 
     <div class="navbar-center hidden lg:block">

@@ -24,7 +24,7 @@
                     </div>
                 @endif
 
-                <label for="current_password" class="label">{{ __('Current password') }}</label>
+                <x-label for="current_password">{{ __('Current password') }}</x-label>
                 <input
                     type="password"
                     name="current_password"
@@ -34,7 +34,7 @@
                 />
                 <x-input-error :messages="$errors->get('current_password')" />
 
-                <label for="password" class="label">{{ __('New password') }}</label>
+                <x-label for="password">{{ __('New password') }}</x-label>
                 <input
                     type="password"
                     name="password"
@@ -44,11 +44,7 @@
                 />
                 <x-input-error :messages="$errors->get('password')" />
 
-                <label
-                    for="password_confirmation"
-                    class="label"
-                    >{{ __('Confirm password') }}</label
-                >
+                <x-label for="password_confirmation">{{ __('Confirm password') }}</x-label>
                 <input
                     type="password"
                     name="password_confirmation"

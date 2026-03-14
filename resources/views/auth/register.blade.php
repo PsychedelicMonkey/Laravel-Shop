@@ -10,7 +10,7 @@
             @csrf
 
             <x-fieldset class="border-base-300 bg-base-200 rounded-box w-xs border p-4">
-                <label class="label">{{ __('Name') }}</label>
+                <x-label>{{ __('Name') }}</x-label>
                 <label @class (['input', 'input-error' => $errors->has('name')])>
                     <input
                         type="text"
@@ -24,7 +24,7 @@
                 </label>
                 <x-input-error :messages="$errors->get('name')" />
 
-                <label for="email" class="label">{{ __('Email address') }}</label>
+                <x-label for="email">{{ __('Email address') }}</x-label>
                 <label @class (['input', 'input-error' => $errors->has('email')])>
                     <input
                         type="email"
@@ -38,7 +38,7 @@
                 </label>
                 <x-input-error :messages="$errors->get('email')" />
 
-                <label for="password" class="label">{{ __('Password') }}</label>
+                <x-label for="password">{{ __('Password') }}</x-label>
                 <label @class (['input', 'input-error' => $errors->has('password')])>
                     <input
                         type="password"
@@ -51,11 +51,7 @@
                 </label>
                 <x-input-error :messages="$errors->get('password')" />
 
-                <label
-                    for="password_confirmation"
-                    class="label"
-                    >{{ __('Confirm password') }}</label
-                >
+                <x-label for="password_confirmation">{{ __('Confirm password') }}</x-label>
                 <label @class (['input', 'input-error' => $errors->has('password_confirmation')])>
                     <input
                         type="password"
