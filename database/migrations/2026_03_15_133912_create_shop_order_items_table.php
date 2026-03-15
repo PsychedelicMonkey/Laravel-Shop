@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignUlid('shop_product_id')->nullable()->constrained('shop_products')->cascadeOnDelete();
             $table->integer('qty');
             $table->decimal('unit_price', 10, 2);
+            $table->unsignedInteger('sort')->default(0);
             $table->timestamps();
         });
     }

@@ -13,6 +13,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CustomerFactory extends Factory
 {
     /**
+     * @var class-string>
+     */
+    protected $model = Customer::class;
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -20,7 +25,12 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
+            'birthday' => $this->faker->dateTimeBetween('-35 years', '-18 years'),
+            'created_at' => $this->faker->dateTimeBetween('-1 years', '-6 month'),
+            'updated_at' => $this->faker->dateTimeBetween('-5 month'),
         ];
     }
 }

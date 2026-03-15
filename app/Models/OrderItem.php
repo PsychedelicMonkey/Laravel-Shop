@@ -40,6 +40,7 @@ class OrderItem extends Model
         return [
             'qty' => 'integer',
             'unit_price' => 'decimal:2',
+            'sort' => 'integer',
         ];
     }
 

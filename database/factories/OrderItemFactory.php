@@ -13,6 +13,11 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class OrderItemFactory extends Factory
 {
     /**
+     * @var class-string<OrderItem>
+     */
+    protected $model = OrderItem::class;
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -20,7 +25,8 @@ class OrderItemFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'qty' => $this->faker->numberBetween(1, 10),
+            'unit_price' => $this->faker->randomFloat(2, 100, 500),
         ];
     }
 }
