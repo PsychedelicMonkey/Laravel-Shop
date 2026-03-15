@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Author;
-use App\Models\Category;
-use App\Models\Post;
+use App\Models\Blog\Author;
+use App\Models\Blog\Category;
+use App\Models\Blog\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace App\Models\Blog;
 
+use App\Models\Media;
 use App\Traits\HasTags;
-use Database\Factories\PostFactory;
+use Database\Factories\Blog\PostFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

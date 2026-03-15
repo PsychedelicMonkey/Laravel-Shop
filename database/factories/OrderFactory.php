@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Category>
+ * @extends Factory<Order>
  */
-class CategoryFactory extends Factory
+class OrderFactory extends Factory
 {
     /**
      * Define the model's default state.

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Database\Factories;
+namespace Database\Factories\Blog;
 
-use App\Models\Author;
+use App\Models\Blog\Author;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

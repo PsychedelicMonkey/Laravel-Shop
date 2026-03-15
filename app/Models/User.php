@@ -8,6 +8,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
@@ -70,5 +71,11 @@ class User extends Authenticatable implements MustVerifyEmail
         $lastWord = $name_array[count($name_array) - 1];
 
         return $firstWord[0] . $lastWord[0];
+    }
+
+    /** @return HasOne<Customer, $this> */
+    public function customer(): HasOne
+    {
+        return $this->hasOne(Customer::class);
     }
 }
