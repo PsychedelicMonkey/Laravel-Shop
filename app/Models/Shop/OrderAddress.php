@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace App\Models\Shop;
 
-use Database\Factories\OrderAddressFactory;
+use Database\Factories\Shop\OrderAddressFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +14,7 @@ class OrderAddress extends Model
 {
     /** @use HasFactory<OrderAddressFactory> */
     use HasFactory;
+
     use HasUlids;
 
     /**

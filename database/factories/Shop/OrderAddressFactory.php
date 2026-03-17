@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Database\Factories;
+namespace Database\Factories\Shop;
 
-use App\Models\OrderAddress;
+use App\Models\Shop\OrderAddress;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

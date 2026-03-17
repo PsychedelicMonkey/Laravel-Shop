@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace App\Models\Shop;
 
 use App\Traits\HasTags;
-use Database\Factories\ProductFactory;
+use Database\Factories\Shop\ProductFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +18,7 @@ class Product extends Model implements HasMedia
 {
     /** @use HasFactory<ProductFactory> */
     use HasFactory;
+
     use HasTags;
     use HasUlids;
     use InteractsWithMedia;

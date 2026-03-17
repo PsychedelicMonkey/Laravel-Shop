@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Database\Factories;
+namespace Database\Factories\Shop;
 
-use App\Models\Customer;
+use App\Models\Shop\Customer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CustomerFactory extends Factory
 {
     /**
-     * @var class-string>
+     * @var class-string<Customer>
      */
     protected $model = Customer::class;
 

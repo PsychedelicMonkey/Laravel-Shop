@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Database\Factories;
+namespace Database\Factories\Shop;
 
 use App\Enums\OrderStatus;
-use App\Models\Order;
+use App\Models\Shop\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
