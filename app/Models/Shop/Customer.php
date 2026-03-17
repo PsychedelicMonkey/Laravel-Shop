@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Shop;
 
+use App\Models\Address;
 use App\Models\User;
 use Database\Factories\Shop\CustomerFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
@@ -11,6 +12,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Customer extends Model
@@ -48,10 +51,22 @@ class Customer extends Model
         ];
     }
 
+    /** @return MorphToMany<Address, $this> */
+    public function addresses(): MorphToMany
+    {
+        return $this->morphToMany(Address::class, 'addressable');
+    }
+
     /** @return HasMany<Order, $this> */
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'shop_customer_id');
+    }
+
+    /** @return HasManyThrough<Payment, Order, $this> */
+    public function payments(): HasManyThrough
+    {
+        return $this->hasManyThrough(Payment::class, Order::class, 'shop_customer_id');
     }
 
     /** @return BelongsTo<User, $this> */

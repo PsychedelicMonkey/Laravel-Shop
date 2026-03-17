@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Blog;
 
+use App\Models\Comment;
 use App\Models\Media;
 use App\Traits\HasTags;
 use Database\Factories\Blog\PostFactory;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
@@ -63,6 +65,12 @@ class Post extends Model implements HasMedia
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'blog_category_id');
+    }
+
+    /** @return MorphMany<Comment, $this> */
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function getContentPreviewAttribute(): string
