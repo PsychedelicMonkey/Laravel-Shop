@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table): void {
             $table->ulid('id')->primary();
             $table->string('country')->nullable();
             $table->string('street')->nullable();
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('addressables', function (Blueprint $table) {
+        Schema::create('addressables', function (Blueprint $table): void {
             $table->foreignUlid('address_id');
             $table->ulidMorphs('addressable');
         });

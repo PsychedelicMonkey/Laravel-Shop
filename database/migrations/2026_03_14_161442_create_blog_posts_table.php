@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blog_posts', function (Blueprint $table) {
+        Schema::create('blog_posts', function (Blueprint $table): void {
             $table->ulid('id')->primary();
             $table->foreignUlid('blog_author_id')->constrained('blog_authors')->cascadeOnDelete();
             $table->foreignUlid('blog_category_id')->nullable()->constrained('blog_categories')->nullOnDelete();

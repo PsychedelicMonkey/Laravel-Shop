@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shop_payments', function (Blueprint $table) {
+        Schema::create('shop_payments', function (Blueprint $table): void {
             $table->ulid('id')->primary();
             $table->foreignUlid('shop_order_id')->constrained('shop_orders')->cascadeOnDelete();
             $table->string('reference');
