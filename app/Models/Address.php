@@ -16,6 +16,7 @@ class Address extends Model
 {
     /** @use HasFactory<AddressFactory> */
     use HasFactory;
+
     use HasUlids;
 
     /**

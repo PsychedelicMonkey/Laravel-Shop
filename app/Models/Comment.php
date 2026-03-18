@@ -16,6 +16,7 @@ class Comment extends Model
 {
     /** @use HasFactory<CommentFactory> */
     use HasFactory;
+
     use HasUlids;
 
     /**
